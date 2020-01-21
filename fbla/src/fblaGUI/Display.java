@@ -1,0 +1,93 @@
+package fblaGUI;
+
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+public class Display {
+	public String ID;
+	public String GRADE;
+	public String HOURS;
+	public String FNAME;
+	public String LNAME;
+	public String SCHOOL;
+	
+	Display(){    
+		
+		JFrame f=new JFrame("Button Display"); 
+					//submit button
+		JButton b=new JButton("Search");    
+		b.setBounds(475,440,150, 40);
+		
+		
+		
+		JButton u=new JButton("Update");    
+		u.setBounds(659,440,150, 40);   
+					//enter name label
+		JLabel label = new JLabel();		
+		label.setText("Student Data");
+		label.setBounds(10, 10, 100, 100);
+					//empty label which will show event after button clicked
+		
+					// to enter name
+		Parser parseclass = new Parser();
+		JScrollPane scrollPane = new JScrollPane(parseclass.parse());
+		
+		
+					//add to frame
+		
+		JTextField textfield= new JTextField();
+		textfield.setBounds(115, 440, 350, 40);
+		
+		
+		
+		scrollPane.setBounds(110, 20, 700, 400);
+		f.add(scrollPane);
+		f.add(label);
+		f.add(b); 
+		f.add(u);
+		f.add(textfield);
+		f.setSize(1000,1000);  
+		f.setLayout(null);    
+		f.setVisible(true);    
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
+		
+							//action listener
+		b.addActionListener(new ActionListener() {
+	        
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new AddStudent();		
+			}          
+	      });
+		u.addActionListener(new ActionListener() {
+	        
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				scrollPane.removeAll();
+				scrollPane.add(parseclass.parse());
+				
+				
+			}          
+	      });
+		}         
+	
+	
+		public static void main(String[] args) {    
+		    new Display();    
+		}    
+ }
