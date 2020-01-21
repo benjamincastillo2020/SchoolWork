@@ -45,8 +45,7 @@ public class Display {
 		
 					// to enter name
 		Parser parseclass = new Parser();
-		JTable list = new JTable(parseclass.parse());
-		JScrollPane scrollPane = new JScrollPane(list);
+		JScrollPane scrollPane = new JScrollPane(parseclass.parse());
 		
 		
 					//add to frame
@@ -67,7 +66,7 @@ public class Display {
 		f.setVisible(true);    
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
 		
-							
+							//action listener
 		b.addActionListener(new ActionListener() {
 	        
 			@Override
@@ -79,9 +78,9 @@ public class Display {
 	        
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
 				scrollPane.removeAll();
-				 
+				scrollPane.add(parseclass.parse());
+				
 				
 			}          
 	      });

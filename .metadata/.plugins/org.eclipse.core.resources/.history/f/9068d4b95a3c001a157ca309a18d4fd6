@@ -20,10 +20,11 @@ public class Parser {
 	
 	
 	
-	public DefaultTableModel parse() {
+	public JScrollPane parse() {
 		String[] header = {"ID", "Grade", "First Name", "Last Name", "School", "Hours" };
 		DefaultTableModel DTM = new DefaultTableModel(header, 0);
-		
+		JTable list = new JTable(DTM);
+		JScrollPane scrollPane = new JScrollPane(list);
 		
 	try
 	{
@@ -121,6 +122,6 @@ public class Parser {
 	catch(Exception ex ) {
 		
 	}
-	return DTM;
+	return scrollPane;
 }
 }
