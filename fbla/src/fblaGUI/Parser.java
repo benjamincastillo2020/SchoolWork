@@ -1,5 +1,7 @@
 package fblaGUI;
 
+import java.awt.Component;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -11,18 +13,19 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class Parser {
+	
 	public String ID;
 	public String GRADE;
 	public String HOURS;
 	public String FNAME;
 	public String LNAME;
 	public String SCHOOL;
-	
+	String[] header = {"ID", "Grade", "First Name", "Last Name", "School", "Hours" };
+	protected DefaultTableModel DTM = new DefaultTableModel(header, 0);
 	
 	
 	public DefaultTableModel parse() {
-		String[] header = {"ID", "Grade", "First Name", "Last Name", "School", "Hours" };
-		DefaultTableModel DTM = new DefaultTableModel(header, 0);
+		
 		
 		
 	try

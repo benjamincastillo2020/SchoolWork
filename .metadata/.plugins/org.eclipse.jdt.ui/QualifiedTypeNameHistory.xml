@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
+<fullyQualifiedTypeName name="java.awt.event.WindowEvent"/>
+<fullyQualifiedTypeName name="javax.swing.table.TableRowSorter"/>
+<fullyQualifiedTypeName name="javax.swing.event.DocumentEvent"/>
+<fullyQualifiedTypeName name="javax.swing.event.DocumentListener"/>
+<fullyQualifiedTypeName name="javax.swing.RowFilter"/>
+</qualifiedTypeNameHistroy>
