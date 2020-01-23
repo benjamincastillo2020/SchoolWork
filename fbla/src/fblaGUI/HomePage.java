@@ -6,14 +6,11 @@ import java.awt.GraphicsEnvironment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.TableRowSorter;
 
-public class EditTextScreen {
 
-	public EditTextScreen() {
+public class HomePage {
+
+	public HomePage() {
 		JFrame frame=new JFrame("Landing Page"); 
 		//submit button
 		JButton addStudentButton = new JButton("Open Databse");    
@@ -44,7 +41,7 @@ public class EditTextScreen {
 	}
 
 	public static void main(String[] args) {
-		new EditTextScreen();
+		new HomePage();
 		String fonts[] = 
 			      GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 
