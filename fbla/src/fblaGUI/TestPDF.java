@@ -29,10 +29,10 @@ public class TestPDF {
 		
 		
 		
-		
-		String Name = FName + LName;
+		String outPutLocation = "StudentReports/" + I_D + ".pdf";
+		String Name = FName + " " + LName;
 		Document document = new Document();
-		PdfWriter.getInstance(document, new FileOutputStream("iTextHelloWorld.pdf"));
+		PdfWriter.getInstance(document, new FileOutputStream(outPutLocation));
 		 
 		document.open();
 		Font font = FontFactory.getFont(FontFactory.COURIER, 55, BaseColor.BLACK);
@@ -94,7 +94,7 @@ public class TestPDF {
 	
 	public static void main(String[] args) throws DocumentException, MalformedURLException, IOException {
 		
-			writeStudentReport("045980", "2022", "David", "Anderson", "TCCHS", "45");
+			writeStudentReport("045980", "2022", "Norman", "dadydady", "bishop", "420");
 		
 		
 	
