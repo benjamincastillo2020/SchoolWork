@@ -6,4 +6,6 @@
 <fullyQualifiedTypeName name="javax.swing.event.DocumentEvent"/>
 <fullyQualifiedTypeName name="javax.swing.event.DocumentListener"/>
 <fullyQualifiedTypeName name="javax.swing.RowFilter"/>
+<fullyQualifiedTypeName name="java.awt.GraphicsEnvironment"/>
+<fullyQualifiedTypeName name="java.awt.Font"/>
 </qualifiedTypeNameHistroy>
