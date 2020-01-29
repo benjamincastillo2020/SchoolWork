@@ -1414,3 +1414,24 @@ org.eclipse.core.runtime.CoreException: Could not read maven project
 2020-01-28 09:22:33,100 [Worker-13: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/apache/pdfbox/preflight/2.0.18/preflight-2.0.18.jar
 2020-01-28 09:22:33,201 [Worker-13: Updating Maven Dependencies] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/apache/pdfbox/preflight/2.0.18/preflight-2.0.18.jar
 2020-01-29 08:51:57,412 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2020-01-29 09:11:48,227 [Worker-18: Creating project "itextpdf"] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.itextpdf:itextpdf:5.5.10 @ C:\Users\castillob8715\eclipse-workspace\itextpdf\pom.xml.
+2020-01-29 09:11:49,062 [Worker-18: Creating project "itextpdf"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /itextpdf/src/main/java
+2020-01-29 09:11:49,062 [Worker-18: Creating project "itextpdf"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /itextpdf/src/main/resources
+2020-01-29 09:11:49,062 [Worker-18: Creating project "itextpdf"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /itextpdf/src/test/java
+2020-01-29 09:11:49,062 [Worker-18: Creating project "itextpdf"] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /itextpdf/src/test/resources
+2020-01-29 09:11:49,531 [Worker-18: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-01-29 09:11:49,547 [Worker-18: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-01-29 09:11:49,547 [Worker-18: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-01-29 09:11:49,547 [Worker-18: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-01-29 09:14:19,277 [Worker-16: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-01-29 09:14:19,287 [Worker-16: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-01-29 09:14:19,287 [Worker-16: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-01-29 09:14:19,298 [Worker-16: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-01-29 09:14:58,730 [Worker-16: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-01-29 09:14:58,746 [Worker-16: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-01-29 09:14:58,746 [Worker-16: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-01-29 09:14:58,762 [Worker-16: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-01-29 09:15:02,044 [Worker-13: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-01-29 09:15:02,060 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-01-29 09:15:02,060 [Worker-13: Building workspace] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2020-01-29 09:15:02,060 [Worker-13: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
