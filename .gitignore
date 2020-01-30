@@ -1,1 +1,7 @@
-/.metadata/
+*.metadata
+*.index
+*.xmi
+*.snap
+*.resources
+*.zip
+*.log
