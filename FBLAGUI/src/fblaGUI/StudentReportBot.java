@@ -1,5 +1,6 @@
 package fblaGUI;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -72,7 +73,12 @@ public class StudentReportBot {
 		
 		//StudentImage Image
 		String imagelocation = "Photos/" + I_D + ".jpg";
+		File fileLoc = new File(imagelocation);
+		boolean exists = fileLoc.exists();
 		
+		if (exists==false) {
+			imagelocation = "Photos/404.png";
+		}
 		Image img1 = Image.getInstance(imagelocation);
 		
 		

@@ -108,7 +108,9 @@ public class StudentReport {
 				}
 				else {	
 				int selectedRows = list.getSelectedRow();
-			    	for (int i=0;i<=5;i++) {
+			    	
+				
+					for (int i=0;i<=5;i++) {
 			    		System.out.println(list.getValueAt(selectedRows,i));
 			    		
 			    		if (i==0) {
