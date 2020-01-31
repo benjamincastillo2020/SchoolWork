@@ -20,17 +20,17 @@ public class AddStudent {
 	
 	AddXmlNode upload = new AddXmlNode();
 	AddStudent(){    
-		JFrame f=new JFrame("Button Example"); 
+		JFrame f=new JFrame("Button Example");
 					//submit button
-		JButton b=new JButton("Submit");    
-		b.setBounds(160,340,140, 40);    
+		JButton b=new JButton("Submit");
+		b.setBounds(160,340,140, 40);
 					//enter name label
 		JLabel newStudent = new JLabel("<html><span style='font-size:20px'>"+"Create New Student"+"</span></html>");
 		newStudent.setBounds(50, 0, 400, 30);
 		
 		
 		JLabel id = new JLabel("ID");
-		id.setBounds(10, 50, 200, 30);
+		id.setBounds(10, 50, 200, 30); 
 		JLabel fname = new JLabel("First Name");
 		fname.setBounds(10, 90, 200, 30);
 		JLabel lname = new JLabel("Last Name");

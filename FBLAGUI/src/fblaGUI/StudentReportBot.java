@@ -21,15 +21,13 @@ import com.itextpdf.text.pdf.parser.Path;
 
 public class StudentReportBot {
 
-	public StudentReportBot() {
-		
-	}
+	
 
-	public static void writeStudentReport(String I_D,String Grade, String FName,String LName, String School, String Hours, String Root) throws DocumentException, MalformedURLException, IOException {
+	public static void writeStudentReport(String I_D, String Grade, String FName,String LName, String School, String Hours, String Root) throws DocumentException, MalformedURLException, IOException  {
 		
 		
 		
-		String outPutLocation = Root + I_D + ".pdf";
+		String outPutLocation = Root +  "\\"+ I_D + ".pdf";
 		String Name = FName + " " + LName;
 		Document document = new Document();
 		PdfWriter.getInstance(document, new FileOutputStream(outPutLocation));
@@ -73,7 +71,8 @@ public class StudentReportBot {
 		hoursField.add(HoursC);
 		
 		//StudentImage Image
-		String imagelocation = "Photos/" + I_D + ".png";
+		String imagelocation = "Photos/" + I_D + ".jpg";
+		
 		Image img1 = Image.getInstance(imagelocation);
 		
 		
@@ -82,6 +81,7 @@ public class StudentReportBot {
 		
 		document.add(preface);
 		document.add(img1);
+		document.add( Chunk.NEWLINE );
 		document.add(idField);
 		document.add( Chunk.NEWLINE );
 		document.add( Chunk.NEWLINE );
@@ -102,13 +102,30 @@ public class StudentReportBot {
 		document.close();
 	}
 	
-	public static void main(String[] args) throws DocumentException, MalformedURLException, IOException {
+	public static void main(String[] args) {
 		
-			
+		
+		
 		
 		
 	
 
-}
+	}
+	
+	public void saveReport(String I_D, String Grade, String FName,String LName, String School, String Hours, String Root)  {
+		try {
+			writeStudentReport(I_D, Grade,FName ,LName, School, Hours, Root);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	
 }

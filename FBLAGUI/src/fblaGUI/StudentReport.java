@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -31,7 +32,8 @@ public class StudentReport {
 	String School;
 	String Hours;
 	StudentReportBot reporter = new StudentReportBot();
-	public StudentReport() {
+	
+	public StudentReport()  {
 		JFrame frame = new JFrame("Select Student");
 		File filename = null;
 		
@@ -42,6 +44,7 @@ public class StudentReport {
 		title.setBounds(170, 7, 500, 40);
 		JTextField fileLocField= new JTextField();
 		fileLocField.setBounds(170, 520, 350, 35);
+		fileLocField.setText(System.getProperty("user.dir") + "\\StudentReports");
 		
 		Parser parseclass = new Parser();
 		JTable list = new JTable(parseclass.parse());
@@ -96,47 +99,56 @@ public class StudentReport {
 	      });
 		
 		Create.addActionListener(new ActionListener() {
-	        
+			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-			    int selectedRows = list.getSelectedRow();
-			    
+				if (fileLocField.getText() == " ") {
+					JOptionPane.showMessageDialog(frame,"Please Select A File Location.","Alert",JOptionPane.WARNING_MESSAGE); 
+				}
+				else {	
+				int selectedRows = list.getSelectedRow();
 			    	for (int i=0;i<=5;i++) {
 			    		System.out.println(list.getValueAt(selectedRows,i));
-			    		if(i==0) {
-			    			I_D=(String) list.getValueAt(selectedRows,i);
+			    		
+			    		if (i==0) {
+			    			I_D = (String) list.getValueAt(selectedRows,i);
+			    			
 			    		}
-			    		if(i==1) {
-			    			Grade=(String) list.getValueAt(selectedRows,i);
+
+			    		if (i==1) {
+			    			Grade = (String) list.getValueAt(selectedRows,i);
+			    			
 			    		}
-			    		if(i==2) {
-			    			FName=(String) list.getValueAt(selectedRows,i);
+
+			    		if (i==2) {
+			    			FName = (String) list.getValueAt(selectedRows,i);
+			    			
 			    		}
-			    		if(i==3) {
-			    			LName=(String) list.getValueAt(selectedRows,i);
+
+			    		if (i==3) {
+			    			LName = (String) list.getValueAt(selectedRows,i);
+			    			
 			    		}
-			    		if(i==4) {
-			    			School=(String) list.getValueAt(selectedRows,i);
+
+			    		if (i==4) {
+			    			School = (String) list.getValueAt(selectedRows,i);
+			    			
 			    		}
-			    		if(i==5) {
-			    			Hours=(String) list.getValueAt(selectedRows,i);
+
+			    		if (i==5) {
+			    			Hours = (String) list.getValueAt(selectedRows,i);
+			    			
 			    		}
-			    
+			    	
+			    		
 			    	}
-			    	//Create PDF
-			    	try {
-						reporter.writeStudentReport(I_D, Grade, FName, LName, School, Hours, filename.getPath());
-					} catch (MalformedURLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (DocumentException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+			    	
+			    	reporter.saveReport(I_D, Grade,FName ,LName, School, Hours, fileLocField.getText());
+			    	
+						
+					
+				}		
 			}          
 	      });
 		
@@ -163,7 +175,7 @@ public class StudentReport {
 	      });
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DocumentException, MalformedURLException, IOException{
 		new StudentReport();
 		
 
