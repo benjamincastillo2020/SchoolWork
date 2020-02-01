@@ -2,6 +2,8 @@ package fblaGUI;
 
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,8 +15,8 @@ public class HomePage {
 	public HomePage() {
 		JFrame frame=new JFrame("Landing Page"); 
 		//submit button
-		JButton addStudentButton = new JButton("Open Databse");    
-		addStudentButton.setBounds(10,100,150, 40);
+		JButton OpenData = new JButton("Open Databse");    
+		OpenData.setBounds(10,100,150, 40);
 
 		JButton updateButton=new JButton("New Database");    
 		updateButton.setBounds(10,200,150, 40); 
@@ -30,7 +32,7 @@ public class HomePage {
 		label.setFont(new java.awt.Font("Arial", Font.ITALIC, 20));
 	
 		frame.add(label);
-		frame.add(addStudentButton);
+		frame.add(OpenData);
 		frame.add(updateButton);
 		
 		frame.add(saveButton);
@@ -38,10 +40,20 @@ public class HomePage {
 		frame.setLayout(null);    
 		frame.setVisible(true);    
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
+	
+		OpenData.addActionListener(new ActionListener() {
+	        
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new LandingPage();		
+			}          
+	      });
+	
 	}
 
 	public static void main(String[] args) {
 		new HomePage();
+		
 		
 	}
 

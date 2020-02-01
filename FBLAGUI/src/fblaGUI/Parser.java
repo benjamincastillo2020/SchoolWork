@@ -20,7 +20,7 @@ public class Parser {
 	public String FNAME;
 	public String LNAME;
 	public String SCHOOL;
-	String[] header = {"ID", "Grade", "First Name", "Last Name", "School", "Hours" };
+	String[] header = {"ID",  "First Name", "Last Name", "School","Grade", "Hours" };
 	protected DefaultTableModel DTM = new DefaultTableModel(header, 0);
 	
 	
