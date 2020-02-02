@@ -2,8 +2,10 @@ package fblaGUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -38,7 +40,7 @@ public class LandingPage {
 	public StudentReportBot reporter = new StudentReportBot();
 	
 	//(x, y, width, height)
-	public LandingPage(){    
+	public LandingPage(String XMLroot){    
 		
 		JFrame frame=new JFrame("Landing Page"); 
 					//submit button
@@ -57,7 +59,7 @@ public class LandingPage {
 		
 		
 		JButton clear=new JButton("Clear Selection");
-		clear.setBounds(820,280,150, 40);
+		clear.setBounds(820,380,150, 40);
 		
 		JButton updateButton=new JButton("Update");    
 		updateButton.setBounds(820,20,150, 40);
@@ -72,7 +74,7 @@ public class LandingPage {
 		
 					// to enter name
 		Parser parseclass = new Parser();
-		JTable list = new JTable(parseclass.parse());
+		JTable list = new JTable(parseclass.parse(XMLroot));
 		JScrollPane scrollPane = new JScrollPane(list);
 		TableRowSorter sorter = new TableRowSorter<>(parseclass.DTM);
 		list.setRowSorter(sorter);
@@ -99,7 +101,7 @@ public class LandingPage {
 		frame.setSize(1000,1000);  
 		frame.setLayout(null);    
 		frame.setVisible(true);    
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
+		 
 		
 		
 		addStudentButton.addActionListener(new ActionListener() {
@@ -126,8 +128,7 @@ public class LandingPage {
 				
 				int[] indexs=list.getSelectedRows();
 				int rowCount = list.getRowCount();
-				//all the selected row are here no need to go throw 
-				//all your rows to see if they are selected or not
+				
 				
 				if (clear.isVisible()) {
 				
@@ -139,7 +140,7 @@ public class LandingPage {
 					}
 					else {
 						System.out.println(list.getSelectedRow());
-						//Print Form Here\/\/\/\/\/
+						
 						if (fileLocField.getText() == " ") {
 							JOptionPane.showMessageDialog(frame,"Please Select A File Location.","Alert",JOptionPane.WARNING_MESSAGE); 
 						}
@@ -216,7 +217,7 @@ public class LandingPage {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				parseclass.DTM.setRowCount(0);
-				JTable list = new JTable(parseclass.parse());
+				JTable list = new JTable(parseclass.parse(XMLroot));
 				JScrollPane scrollPane = new JScrollPane(list);
 				
 				
@@ -245,12 +246,37 @@ public class LandingPage {
 	         }
 	      });
 		
+		fileLoc.addActionListener(new ActionListener() {
+	        
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				JFileChooser chooser = new JFileChooser();
+			    chooser.setCurrentDirectory(new java.io.File(".\\StudentReports"));
+			    chooser.setDialogTitle("Please Select File Location");
+			    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			    chooser.setAcceptAllFileFilterUsed(false);
+
+			    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+			      
+			      File filename = chooser.getSelectedFile();
+			      fileLocField.setText(filename.getPath());
+			    } else {
+			      System.out.println("No Selection ");
+			      fileLocField.setText("No Selection");
+			    }
+			
+				
+				
+			}          
+	      }); 
+		
 		
 	}         
 	
 	
 	public static void main(String[] args) {    
-		    new LandingPage(); 
+		     
 		    
 		}    
 		

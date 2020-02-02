@@ -47,7 +47,7 @@ public class StudentReport {
 		fileLocField.setText(System.getProperty("user.dir") + "\\StudentReports");
 		
 		Parser parseclass = new Parser();
-		JTable list = new JTable(parseclass.parse());
+		JTable list = new JTable();
 		JScrollPane scrollPane = new JScrollPane(list);
 		TableRowSorter sorter = new TableRowSorter<>(parseclass.DTM);
 		list.setRowSorter(sorter);

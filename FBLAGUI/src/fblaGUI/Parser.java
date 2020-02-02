@@ -24,7 +24,7 @@ public class Parser {
 	protected DefaultTableModel DTM = new DefaultTableModel(header, 0);
 	
 	
-	public DefaultTableModel parse() {
+	public DefaultTableModel parse(String XMLroot) {
 		
 		
 		
@@ -117,7 +117,7 @@ public class Parser {
 				
 			}
 		};
-		saxParser.parse("students.xml", handle);
+		saxParser.parse(XMLroot, handle);
 		
 		}
 	
