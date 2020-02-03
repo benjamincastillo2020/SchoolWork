@@ -2,9 +2,11 @@ package fblaGUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentListener;
 import java.io.File;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -53,6 +55,11 @@ public class LandingPage {
 		JButton fileLoc = new JButton("Select Report Location");    
 		fileLoc.setBounds(10,520,180, 40);
 		
+		String[] grades = {"", "8", "9", "10", "11", "12", "All Grades"};
+		
+		JComboBox gradeChooser = new JComboBox(grades);
+		
+		gradeChooser.setBounds(820,240,150, 40);
 		JTextField fileLocField= new JTextField();
 		fileLocField.setBounds(220, 520, 400, 40);
 		fileLocField.setText(System.getProperty("user.dir") + "\\StudentReports");
@@ -79,6 +86,8 @@ public class LandingPage {
 		TableRowSorter sorter = new TableRowSorter<>(parseclass.DTM);
 		list.setRowSorter(sorter);
 		
+		
+		
 					//add to frame
 		
 		JTextField jtf= new JTextField();
@@ -89,6 +98,7 @@ public class LandingPage {
 		scrollPane.setBounds(10, 20, 800, 400);
 		frame.add(scrollPane);
 		frame.add(label);
+		frame.add(gradeChooser);
 		frame.add(fileLoc);
 		frame.add(fileLocField);
 		frame.add(clear);
@@ -227,15 +237,20 @@ public class LandingPage {
 		jtf.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
-	            search(jtf.getText());
+	            search(jtf.getText() + gradeChooser.getSelectedItem().toString());
+	            
+	            
+	            
 	         }
 			@Override
 	         public void removeUpdate(DocumentEvent e) {
-	            search(jtf.getText());
+	            search(jtf.getText() + gradeChooser.getSelectedItem().toString());
+	            
 	         }
 			@Override
 	         public void changedUpdate(DocumentEvent e) {
-	            search(jtf.getText());
+	            search(jtf.getText() + gradeChooser.getSelectedItem().toString());
+	            
 	         }
 			public void search(String str) {
 	            if (str.length() == 0) {
@@ -245,7 +260,27 @@ public class LandingPage {
 	            }
 	         }
 	      });
+		gradeChooser.addActionListener(new ActionListener() {
+	        
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				search(gradeChooser.getSelectedItem().toString());
+				System.out.println(gradeChooser.getSelectedItem().toString());
+				
+				
+			}  
+			
+			public void search(String str) {
+	            if (str.length() == 0) {
+	               sorter.setRowFilter(null);
+	            } else {
+	               sorter.setRowFilter(RowFilter.regexFilter(str));
+	            }
+	         }
+	      });
 		
+	      
 		fileLoc.addActionListener(new ActionListener() {
 	        
 			@Override

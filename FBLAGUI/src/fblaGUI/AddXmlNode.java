@@ -15,10 +15,10 @@ public class AddXmlNode {
    
 
 public void XmlUpload(String I_D, String Grade, String FName,String LName, String School, String Hours ) throws Exception{
-
+		ParsingCurrentData rootF = new ParsingCurrentData();
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-        Document document = documentBuilder.parse("students.xml");
+        Document document = documentBuilder.parse(rootF.currentXMLFile());
         Element root = document.getDocumentElement();
 
         Collection<AddXmlNode> Array = new ArrayList<AddXmlNode>();

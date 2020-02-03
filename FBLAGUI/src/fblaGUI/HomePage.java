@@ -1,12 +1,12 @@
 package fblaGUI;
 
 import java.awt.Font;
-import java.awt.GraphicsEnvironment;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
