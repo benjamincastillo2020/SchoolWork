@@ -4,6 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Formatter;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -40,6 +46,7 @@ public class LandingPage {
 	public String School;
 	public String Hours;
 	public StudentReportBot reporter = new StudentReportBot();
+	AddXmlNode upload = new AddXmlNode();
 	
 	//(x, y, width, height)
 	public LandingPage(String XMLroot){    
@@ -111,6 +118,7 @@ public class LandingPage {
 		frame.setSize(1000,1000);  
 		frame.setLayout(null);    
 		frame.setVisible(true);    
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
 		 
 		
 		
@@ -237,20 +245,34 @@ public class LandingPage {
 		jtf.getDocument().addDocumentListener(new DocumentListener() {
 			@Override
 			public void insertUpdate(DocumentEvent e) {
-	            search(jtf.getText() + gradeChooser.getSelectedItem().toString());
+				if (gradeChooser.getSelectedItem().toString() == "All Grades") {
+	            	search(jtf.getText());
+	            }
+	            else {
+				search(jtf.getText() + gradeChooser.getSelectedItem().toString());
+	            }
 	            
 	            
 	            
 	         }
 			@Override
 	         public void removeUpdate(DocumentEvent e) {
-	            search(jtf.getText() + gradeChooser.getSelectedItem().toString());
+				if (gradeChooser.getSelectedItem().toString() == "All Grades") {
+	            	search(jtf.getText());
+	            }
+	            else {
+				search(jtf.getText() + gradeChooser.getSelectedItem().toString());
+	            }
 	            
 	         }
 			@Override
 	         public void changedUpdate(DocumentEvent e) {
-	            search(jtf.getText() + gradeChooser.getSelectedItem().toString());
-	            
+	            if (gradeChooser.getSelectedItem().toString() == "All Grades") {
+	            	search(jtf.getText());
+	            }
+	            else {
+				search(jtf.getText() + gradeChooser.getSelectedItem().toString());
+	            }
 	         }
 			public void search(String str) {
 	            if (str.length() == 0) {
@@ -260,13 +282,88 @@ public class LandingPage {
 	            }
 	         }
 	      });
+		saveButton.addActionListener(new ActionListener() {
+	        
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					clearTheFile();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				I_D = null;
+				FName = null;
+				LName = null;
+				School = null;
+				Grade = null;
+				Hours = null;
+				
+				int rowCount = list.getRowCount();
+				for (int r=0; r<=rowCount; r++) {
+					
+					for (int i=0;i<=5;i++) {
+						System.out.println(list.getValueAt(r,i));
+		    		
+						if (i==0) {
+							I_D = (String) list.getValueAt(r,i);
+		    			
+						}
+
+						if (i==1) {
+							FName = (String) list.getValueAt(r,i);
+		    			
+		    			
+						}
+
+						if (i==2) {
+							LName = (String) list.getValueAt(r,i);
+		    			
+						}
+
+						if (i==3) {
+							School = (String) list.getValueAt(r,i);
+							
+						}
+
+						if (i==4) {
+							Grade = (String) list.getValueAt(r,i);
+		    			
+						}
+
+						if (i==5) {
+							Hours = (String) list.getValueAt(r,i);
+		    			
+						}
+						//Add XML Nodes
+						try {
+							upload.XmlUpload(I_D, FName, LName, School, Grade, Hours);
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		    	}		
+		}
+				
+			}void clearTheFile() throws IOException {
+		        FileWriter fwOb = new FileWriter("FileName", false); 
+		        PrintWriter pwOb = new PrintWriter(fwOb, false);
+		        pwOb.flush();
+		        pwOb.close();
+		        fwOb.close();
+		    }});
+
 		gradeChooser.addActionListener(new ActionListener() {
 	        
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				search(gradeChooser.getSelectedItem().toString());
-				System.out.println(gradeChooser.getSelectedItem().toString());
+				if (gradeChooser.getSelectedItem().toString() == "All Grades") {
+	            	search(jtf.getText());
+	            }
+	            else {
+				search(jtf.getText() + gradeChooser.getSelectedItem().toString());
+	            }
 				
 				
 			}  
@@ -312,7 +409,7 @@ public class LandingPage {
 	
 	public static void main(String[] args) {    
 		     
-		    
+		  
 		}    
 		
 		
