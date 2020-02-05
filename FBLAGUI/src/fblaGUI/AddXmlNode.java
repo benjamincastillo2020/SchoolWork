@@ -18,7 +18,7 @@ public void XmlUpload(String I_D, String Grade, String FName,String LName, Strin
 		ParsingCurrentData rootF = new ParsingCurrentData();
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-        Document document = documentBuilder.parse(rootF.currentXMLFile());
+        Document document = documentBuilder.parse(rootF.currentXML());
         Element root = document.getDocumentElement();
 
         Collection<AddXmlNode> Array = new ArrayList<AddXmlNode>();

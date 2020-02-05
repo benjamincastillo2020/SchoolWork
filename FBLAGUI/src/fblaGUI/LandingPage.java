@@ -2,7 +2,7 @@ package fblaGUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentListener;
+
 import java.io.File;
 
 import javax.swing.JButton;
@@ -42,6 +42,7 @@ public class LandingPage {
 	public StudentReportBot reporter = new StudentReportBot();
 	
 	//(x, y, width, height)
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public LandingPage(String XMLroot){    
 		
 		JFrame frame=new JFrame("Landing Page"); 
@@ -136,7 +137,9 @@ public class LandingPage {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
+				@SuppressWarnings("unused")
 				int[] indexs=list.getSelectedRows();
+				@SuppressWarnings("unused")
 				int rowCount = list.getRowCount();
 				
 				
@@ -223,6 +226,7 @@ public class LandingPage {
 		
 		updateButton.addActionListener(new ActionListener() {
 	        
+			@SuppressWarnings("unused")
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				

@@ -30,5 +30,18 @@ public class ParsingCurrentData {
 		
 	}
 	
+	public String InSystemWriter() {
+		File getCurrentDatabase = new File("currentDatabase.txt");
+		try (Scanner persistantDataFile = new Scanner(getCurrentDatabase)) {
+			persistantDataFile.useDelimiter(",");
+			String storedData = (persistantDataFile.nextLine());
+			return storedData;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	
 }
