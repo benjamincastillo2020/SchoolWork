@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.sql.Array;
+
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -33,6 +33,7 @@ public class StudentReport {
 	String Hours;
 	StudentReportBot reporter = new StudentReportBot();
 	
+	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
 	public StudentReport()  {
 		JFrame frame = new JFrame("Select Student");
 		File filename = null;

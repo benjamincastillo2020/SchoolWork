@@ -90,7 +90,7 @@ public class AddStudent {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					
-					upload.XmlUpload(Tid.getText(), Tfname.getText(), Tlname.getText(), Tschool.getText(), Tgrade.getText(), Thours.getText(), XMLroot );
+					upload.XmlUpload(Tid.getText(),  Tgrade.getText(), Tfname.getText(), Tlname.getText(), Tschool.getText(), Thours.getText(), XMLroot );
 					reset();
 					showMessageDialog(null, "Successfully Uploaded Student Information");
 				} catch (Exception e) {

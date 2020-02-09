@@ -45,8 +45,8 @@ public class HomePage {
 		JButton changeLoc=new JButton("Edit Location");
 		changeLoc.setBounds(30,145,130, 20);
 		
-		JButton saveButton=new JButton("Print Forms");    
-		saveButton.setBounds(10,300,150, 40); 
+		JButton formPage=new JButton("Print Forms");    
+		formPage.setBounds(10,300,150, 40); 
 		//enter name label
 		 		
 		JLabel label=new JLabel(
@@ -60,7 +60,7 @@ public class HomePage {
 		frame.add(changeLoc);
 		frame.add(NewData);
 		frame.add(fileLocField);
-		frame.add(saveButton);
+		frame.add(formPage);
 		frame.setSize(650,500);  
 		frame.setLayout(null);    
 		frame.setVisible(true);    
@@ -87,6 +87,26 @@ public class HomePage {
 			}
 	      });
 		
+		formPage.addActionListener(new ActionListener() {
+	        
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				XMLroot = fileLocField.getText();
+				
+				File tmpDir = new File(XMLroot);
+				boolean exists = tmpDir.exists();
+				
+				if (exists) {
+					new AwardMaker(XMLroot);
+				}else {
+					
+				JOptionPane.showMessageDialog(frame,
+					    "Please Select an XML file",
+					    "Database Location Error",
+					    JOptionPane.ERROR_MESSAGE);
+				}   
+			}
+	      });
 		changeLoc.addActionListener(new ActionListener() {
 	        
 			@Override

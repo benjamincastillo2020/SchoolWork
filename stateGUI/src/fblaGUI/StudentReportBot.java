@@ -108,15 +108,7 @@ public class StudentReportBot {
 		document.close();
 	}
 	
-	public static void main(String[] args) {
-		
-		
-		
-		
-		
 	
-
-	}
 	
 	public void saveReport(String I_D, String Grade, String FName,String LName, String School, String Hours, String Root)  {
 		try {

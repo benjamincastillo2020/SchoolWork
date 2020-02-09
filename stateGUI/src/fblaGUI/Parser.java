@@ -48,10 +48,10 @@ public class Parser {
 				if(qName.equals("grade")) {
 					bgrade = true;
 				}
-				if(qName.equals("firstname")) {
+				if(qName.equals("Firstname")) {
 					bfname = true;
 				}
-				if(qName.equals("lastname")) {
+				if(qName.equals("Lastname")) {
 					blname = true;
 				}
 				if(qName.equals("school")) {
@@ -103,7 +103,7 @@ public class Parser {
 					HOURS = new String(ch, start, length);
 					bhours = false;
 					
-					Object[] info = {ID, GRADE, FNAME, LNAME, SCHOOL, HOURS};
+					Object[] info = {ID,  FNAME, LNAME, SCHOOL, GRADE, HOURS};
 					DTM.addRow(info);
 						
 					

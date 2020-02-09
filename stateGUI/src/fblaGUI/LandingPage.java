@@ -51,17 +51,19 @@ public class LandingPage {
 		JButton addStudentButton = new JButton("Add Student");    
 		addStudentButton.setBounds(820,130,150, 40);
 		
-		JButton printReports=new JButton("Print Reports");
+		JButton printReports=new JButton("Quick Print");
 		printReports.setBounds(820,180,150, 40);
 		
 		JButton fileLoc = new JButton("Select Report Location");    
 		fileLoc.setBounds(10,520,180, 40);
 		
-		String[] grades = {"", "8", "9", "10", "11", "12", "All Grades"};
-		
+		String[] grades = {"", "8", "9", "10", "11", "12", "All Grades"};	
 		JComboBox gradeChooser = new JComboBox(grades);
-		
 		gradeChooser.setBounds(820,240,150, 40);
+		
+		JButton awardPage=new JButton("Form Page");
+		awardPage.setBounds(820,290,150, 40);
+		
 		JTextField fileLocField= new JTextField();
 		fileLocField.setBounds(220, 520, 400, 40);
 		fileLocField.setText(System.getProperty("user.dir") + "\\StudentReports");
@@ -104,16 +106,17 @@ public class LandingPage {
 		frame.add(fileLoc);
 		frame.add(fileLocField);
 		frame.add(clear);
+		frame.add(awardPage);
 		clear.setVisible(false);
 		frame.add(printReports);
 		frame.add(addStudentButton);
 		frame.add(updateButton);
 		frame.add(jtf);
 		frame.add(saveButton);
-		frame.setSize(1000,1000);  
+		frame.setSize(1000,700);  
 		frame.setLayout(null);    
 		frame.setVisible(true);    
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     
+		  
 		 
 		
 		
@@ -122,6 +125,14 @@ public class LandingPage {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				new AddStudent(XMLroot);		
+			}          
+	      });
+		
+		awardPage.addActionListener(new ActionListener() {
+	        
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new AwardMaker(XMLroot);		
 			}          
 	      });
 		
@@ -344,7 +355,7 @@ public class LandingPage {
 								}
 							
 							}
-						upload.XmlUpload(ID, FNAME, LNAME, SCHOOL, GRADE, HOURS, XMLroot);
+						upload.XmlUpload(ID, GRADE,FNAME, LNAME, SCHOOL,  HOURS, XMLroot);
 						
 						System.out.println(ID+FNAME+LNAME+SCHOOL+GRADE+HOURS+XMLroot);
 					}
@@ -414,9 +425,10 @@ public class LandingPage {
 				
 				if (gradeChooser.getSelectedItem().toString() == "All Grades") {
 	            	search(jtf.getText());
+	            	
 	            }
 	            else {
-				search(jtf.getText() + gradeChooser.getSelectedItem().toString());
+	            	search(jtf.getText() + gradeChooser.getSelectedItem().toString());
 	            }
 				
 				
@@ -424,7 +436,8 @@ public class LandingPage {
 			
 			public void search(String str) {
 	            if (str.length() == 0) {
-	               sorter.setRowFilter(null);
+	            	sorter.setRowFilter(null);
+	            	
 	            } else {
 	               sorter.setRowFilter(RowFilter.regexFilter(str));
 	            }

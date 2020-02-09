@@ -39,13 +39,13 @@ public void XmlUpload(String I_D, String Grade, String FName,String LName, Strin
             newStudent.appendChild(grade);
 
             //FIRSTNAME
-            Element fname = document.createElement("firstname");
+            Element fname = document.createElement("Firstname");
             fname.appendChild(document.createTextNode(FName));
             newStudent.appendChild(fname);
 
             //LASTNAME
             
-            Element lname = document.createElement("lastname");
+            Element lname = document.createElement("Lastname");
             lname.appendChild(document.createTextNode(LName));
             newStudent.appendChild(lname);
             

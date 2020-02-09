@@ -8,13 +8,14 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="GRADE"/>
+			<item value="save"/>
 			<item value="searchButton"/>
 			<item value="s"/>
 			<item value="u"/>
 			<item value="b"/>
 			<item value="f"/>
 			<item value="Display"/>
-			<item value="example"/>
 		</list>
 		<list key="replacehistory">
 			<item value="addStudentButton"/>
