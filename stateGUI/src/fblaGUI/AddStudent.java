@@ -2,13 +2,12 @@ package fblaGUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 
@@ -89,32 +88,50 @@ public class AddStudent {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					
-					upload.XmlUpload(Tid.getText(),  Tgrade.getText(), Tfname.getText(), Tlname.getText(), Tschool.getText(), Thours.getText(), XMLroot );
-					reset();
-					showMessageDialog(null, "Successfully Uploaded Student Information");
+					if (Tid.getText() == "" || Tid.getText() == "" ||  Tgrade.getText() == "" || Tfname.getText() == "" || Tlname.getText() == "" || Tschool.getText() == "" || Thours.getText() == "" ) {
+						JOptionPane.showMessageDialog(f,
+								"Please Fill In ALL Fields",
+								"Error",
+								JOptionPane.WARNING_MESSAGE);
+					} 	else 	{
+						if (isNumber(Tid.getText()) == false || isNumber(Tgrade.getText()) == false || isNumber(Thours.getText()) == false) {
+							JOptionPane.showMessageDialog(f,
+									"Please Enter Numbers for fields: ID, Grade, and Hours",
+									"Error",
+									JOptionPane.WARNING_MESSAGE);
+						}	else 	{
+							upload.XmlUpload(Tid.getText(),  Tgrade.getText(), Tfname.getText(), Tlname.getText(), Tschool.getText(), Thours.getText(), XMLroot );
+							reset();
+							showMessageDialog(null, "Successfully Uploaded Student Information");
+						}
+					}
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}	
 			}          
 	      });
 		
-		f.addWindowListener(new WindowAdapter()
-		{
-		    public void windowClosing(WindowEvent e)
-		    {
-		    	
-		    }
-		});
-		
-		
-		
+
 		}         
 	
-	
-		public static void main(String[] args) {    
-		       
-		}
+		public static boolean isNumber(String s) {
+	      boolean isValidInteger = false;
+	      try
+	      {
+	         Integer.parseInt(s);
+	 
+	         // s is a valid integer
+	 
+	         isValidInteger = true;
+	      }
+	      catch (NumberFormatException ex)
+	      {
+	         // s is not an integer
+	      }
+	 
+	      return isValidInteger;
+	   }
+		
 		
  }

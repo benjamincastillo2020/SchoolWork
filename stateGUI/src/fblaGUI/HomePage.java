@@ -1,3 +1,8 @@
+/*
+ * This Class is the Home page that initializes xml root Directory and creates new GUI Classes.
+ * It imports NewXMLFile.java and ParsingCurrentData.java
+ */
+
 package fblaGUI;
 
 import java.awt.Font;
@@ -54,6 +59,7 @@ public class HomePage {
 				);
 		label.setBounds(0, 0, 500, 100);
 		label.setFont(new java.awt.Font("Arial", Font.ITALIC, 20));
+		
 	
 		frame.add(label);
 		frame.add(OpenData);
@@ -61,7 +67,7 @@ public class HomePage {
 		frame.add(NewData);
 		frame.add(fileLocField);
 		frame.add(formPage);
-		frame.setSize(650,500);  
+		frame.setSize(610,400);  
 		frame.setLayout(null);    
 		frame.setVisible(true);    
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   

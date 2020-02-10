@@ -1,3 +1,8 @@
+/*
+ * This class is in charge of creating student PDF Reports.
+ * Utilizes ITextPDF to create Forms
+ */
+
 package fblaGUI;
 
 import java.io.File;

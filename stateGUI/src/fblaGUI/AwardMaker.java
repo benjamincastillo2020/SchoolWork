@@ -4,7 +4,7 @@ package fblaGUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
+
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.TableRowSorter;
 
 public class AwardMaker {
 	public String I_D;
@@ -23,6 +24,7 @@ public class AwardMaker {
 	public String School;
 	public String Hours;
 	public StudentReportBot reporter = new StudentReportBot();
+	public LeaderBoardCreation leaderBoardReporter = new LeaderBoardCreation();
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public AwardMaker(String XMLroot) {
 		JFrame frame=new JFrame("Landing Page"); 
@@ -34,7 +36,14 @@ public class AwardMaker {
 		JComboBox StudentReportbyGrade= new JComboBox(grades);
 		StudentReportbyGrade.setBounds(230, 100, 200, 40);
 		
+		JButton leaderBoard = new JButton("Print Leaderboard");    
+		leaderBoard.setBounds(10,150,200, 40);
 		
+		JLabel leader=new JLabel("Number of Positions:");
+		leader.setBounds(220,150,150, 40);
+		
+		JTextField postionNum = new JTextField();    
+		postionNum.setBounds(350,150,70, 40);
 		
 		JButton fileLoc = new JButton("Select Report Location");    
 		fileLoc.setBounds(10,300,180, 40);
@@ -54,7 +63,9 @@ public class AwardMaker {
 		frame.add(studentRep);
 		frame.add(fileLoc);
 		frame.add(fileLocField);
-		
+		frame.add(leaderBoard);
+		frame.add(leader);
+		frame.add(postionNum);
 		frame.add(StudentReportbyGrade);
 		
 		frame.setSize(500,500);  
@@ -87,6 +98,23 @@ public class AwardMaker {
 				
 				
 			}          
+	      });
+		
+		leaderBoard.addActionListener(new ActionListener() {
+	        
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (isNumber(postionNum.getText()) == false ) {
+					JOptionPane.showMessageDialog(frame,
+						    "Please Enter Valid Integer",
+						    "Error",
+						    JOptionPane.WARNING_MESSAGE);
+				} else {
+		
+					leaderBoardReporter.CreateLeaderBoard(fileLocField.getText(), XMLroot, Integer.parseInt(postionNum.getText()));
+					success(frame, "Leaderboard has been Created!");
+				}
+			}          
 	      }); 
 		 
 	        	
@@ -97,6 +125,8 @@ public class AwardMaker {
 	        	boolean exists = tmpDir.exists();
 	        	if (exists) {
 	        		reporter.saveReport(I_D, Grade,FName ,LName, School, Hours, Dir);
+	        		
+	        		System.out.println();
 	        		}	else {
 	        		
 	        		JOptionPane.showMessageDialog(frame,
@@ -111,7 +141,12 @@ public class AwardMaker {
 				
 				Parser parseclass = new Parser();
 				JTable list = new JTable(parseclass.parse(XMLroot));
-				
+				TableRowSorter sorter = new TableRowSorter<>(parseclass.DTM);
+				list.setRowSorter(sorter);
+				//set toggle sort order twice in order to make the hours Descending. 
+				//Fastest way to do so and clears up space instead of "for" loop
+				sorter.toggleSortOrder(5);
+				sorter.toggleSortOrder(5);
 				int rowCount = list.getRowCount();
 
 				for (int r=0; r<rowCount; r++) {
@@ -152,8 +187,35 @@ public class AwardMaker {
 		    	}
 
 				}
+				success(frame, "Report Has Been Created");
 			}
 	      });
 
 	}
+	/*
+	 * Following method is a boolean to determine if a string is an integer or not
+	 */
+	 public static boolean isNumber(String s) {
+	      boolean isValidInteger = false;
+	      try
+	      {
+	         Integer.parseInt(s);
+	 
+	         // s is a valid integer
+	 
+	         isValidInteger = true;
+	      }
+	      catch (NumberFormatException ex)
+	      {
+	         // s is not an integer
+	      }
+	 
+	      return isValidInteger;
+	   }
+	 public static void success(JFrame frame, String Message) {
+		 JOptionPane.showMessageDialog(frame,
+				 	Message,
+				    "Success!",
+				    JOptionPane.PLAIN_MESSAGE);
+	 }
 }

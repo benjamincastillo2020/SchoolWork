@@ -1,3 +1,7 @@
+/*
+ * Majority of User Interface. Imports mostly all classes in project and handles all XML root extrapolation to each class it needs.
+ */
+
 package fblaGUI;
 
 import java.awt.event.ActionEvent;
@@ -24,6 +28,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 
@@ -87,8 +92,12 @@ public class LandingPage {
 		Parser parseclass = new Parser();
 		JTable list = new JTable(parseclass.parse(XMLroot));
 		JScrollPane scrollPane = new JScrollPane(list);
-		TableRowSorter sorter = new TableRowSorter<>(parseclass.DTM);
+		TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(parseclass.DTM);
 		list.setRowSorter(sorter);
+			//set toggle sort order twice in order to make the hours Descending. 
+			//Fastest way to do so and clears up space instead of "for" loop
+		sorter.toggleSortOrder(5);
+		sorter.toggleSortOrder(5);
 		
 		
 		

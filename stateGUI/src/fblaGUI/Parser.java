@@ -1,3 +1,7 @@
+/*
+ * Handles Parsing of XML database, but requires parent class to hand off root of XML file.
+ */
+
 package fblaGUI;
 
 
@@ -21,7 +25,6 @@ public class Parser {
 	protected DefaultTableModel DTM = new DefaultTableModel(header, 0);
 	
 	
-	@SuppressWarnings("exports")
 	public DefaultTableModel parse(String XMLroot) {
 		
 		
